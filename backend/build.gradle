@@ -14,8 +14,8 @@ ext {
     junitVersion = '5.9.2'
 }
 
-sourceCompatibility = '11'
-targetCompatibility = '11'
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -34,7 +34,8 @@ dependencies {
     implementation 'javax.servlet:jstl:1.2'
 
     // Logging- 최근에 log4j(보안이슈-거의 사용 안함 -> logback - log4j2(실패)
-    implementation 'ch.qos.logback:logback-classic:1.4.12'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.14'
     implementation 'org.slf4j:slf4j-api:2.0.3'
 
     // xml내 한글 처리
@@ -58,7 +59,11 @@ dependencies {
     implementation 'org.mybatis:mybatis:3.5.10'
     implementation 'org.mybatis:mybatis-spring:2.0.7'
 
+<<<<<<< HEAD
     // postgreSql
+=======
+    //postgreSql
+>>>>>>> 1c930e69d398aef85f886eb1b5c3b45215990011
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
 
