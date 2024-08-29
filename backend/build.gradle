@@ -58,7 +58,7 @@ dependencies {
     implementation 'org.mybatis:mybatis:3.5.10'
     implementation 'org.mybatis:mybatis-spring:2.0.7'
 
-    postgreSql
+    // postgreSql
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
 
