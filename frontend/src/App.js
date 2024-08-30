@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import LoginForm from './screen/LoginForm';
+import React, { useState } from 'react';
+import SignUpForm from './screen/SignUpForm';
+import { Button, Container } from 'react-bootstrap';
 
 function App() {
+  const [isSignUp, setIsSignUp] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+      {isSignUp ? <SignUpForm /> : <LoginForm />}
+      <Button
+        variant="link"
+        onClick={() => setIsSignUp(!isSignUp)}
+        className="w-100 mt-3"
+      >
+        {isSignUp ? 'Already have an account? Login' : 'Don\'t have an account? Sign Up'}
+      </Button>
+    </Container>
   );
 }
 
 export default App;
+
+
