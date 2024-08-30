@@ -79,11 +79,12 @@ dependencies {
 
     //security
     // https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
-    implementation group: 'org.springframework.security', name: 'spring-security-core', version: '6.3.1'
+    implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.8.13'
+
     // https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
-    implementation group: 'org.springframework.security', name: 'spring-security-web', version: '6.3.1'
-    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
-    implementation group: 'org.springframework.security', name: 'spring-security-core', version: '6.3.1'
+    implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.8.13'
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
+    implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.8.13'
 
     //jwt토큰기반인증용
     implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
