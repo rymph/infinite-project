@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import axios from 'axios';
+
 
 function SignUpForm() {
     const [formData, setFormData] = useState({
@@ -9,14 +11,27 @@ function SignUpForm() {
     });
 
     const [errors, setErrors] = useState({});
+    const [message, setMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validate(formData);
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            console.log('Form submitted successfully', formData);
+            try {
+                const response = await axios.post('https://your-api.com/sign-up', formData); // dummy api
+
+                console.log('Sign up response:', response.data);
+
+                // 성공 메시지 표시
+                setMessage('Login successful!');
+
+                // 이후 작업 수행 (예: 리다이렉션)
+            } catch (error) {
+                console.error('Login error:', error);
+                setMessage('Login failed. Please check your credentials.');
+            }
         }
     };
 
