@@ -3,5 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- mapper 설정은 dtd 참고 -->
-<mapper namespace="">
+<mapper namespace="com.example.backend.member.mapper.MemberMapper">
+    <insert id="save" parameterType="member">
+        insert into member(user_id, password)
+        values (#{userId}, #{password})
+    </insert>
 </mapper>
