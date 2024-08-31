@@ -172,3 +172,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+src/main/webapp/WEB-INF/properties/db.properties
