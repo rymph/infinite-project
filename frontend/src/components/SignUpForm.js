@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate,Link } from 'react-router-dom';
 
-function LoginForm() {
+
+function SignUpForm() {
     const [formData, setFormData] = useState({
+        username: '',
         email: '',
         password: '',
     });
 
     const [errors, setErrors] = useState({});
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();  // useNavigate 훅 사용
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,19 +23,21 @@ function LoginForm() {
             setErrors(validationErrors);
         } else {
             try {
-                const response = await axios.post('https://your-api.com/auth/login', formData);
+                const response = await axios.post('https://your-api.com/sign-up', formData); // dummy api
 
-                // 로그인 성공 시 토큰 저장
-                const token = response.data.accessToken;
-                localStorage.setItem('accessToken', token);
+                console.log('Sign up response:', response.data);
 
                 // 성공 메시지 표시
-                setMessage('Login successful!');
+                setMessage('signUp successful!');
+                console.log(message);
+                navigate('/login');
+
 
                 // 이후 작업 수행 (예: 리다이렉션)
             } catch (error) {
-                console.error('Login error:', error);
-                setMessage('Login failed. Please check your credentials.');
+                console.error('signUp error:', error);
+                setMessage('signUp failed. Please check your credentials.');
+                console.log(message);
             }
         }
     };
@@ -45,6 +52,7 @@ function LoginForm() {
 
     const validate = (values) => {
         const errors = {};
+        if (!values.username) errors.username = 'Username is required';
         if (!values.email) errors.email = 'Email is required';
         if (!values.password) errors.password = 'Password is required';
         return errors;
@@ -55,11 +63,23 @@ function LoginForm() {
             <Row>
                 <Col>
                     <Form onSubmit={handleSubmit} className="p-4 border rounded">
-                        <h2 className="text-center mb-4">Login</h2>
+                        <h2 className="text-center mb-4">Sign Up</h2>
 
-                        {message && <p className="text-center">{message}</p>}
+                        <Form.Group controlId="username">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="username"
+                                value={formData.username}
+                                onChange={handleChange}
+                                isInvalid={!!errors.username}
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                {errors.username}
+                            </Form.Control.Feedback>
+                        </Form.Group>
 
-                        <Form.Group controlId="email">
+                        <Form.Group controlId="email" className="mt-3">
                             <Form.Label>Email</Form.Label>
                             <Form.Control
                                 type="email"
@@ -88,8 +108,11 @@ function LoginForm() {
                         </Form.Group>
 
                         <Button type="submit" variant="primary" className="mt-4 w-100">
-                            Login
+                            Sign Up
                         </Button>
+                        <div className="text-center mt-3">
+                            <Link to="/login">Already have an account? Login</Link>
+                        </div>
                     </Form>
                 </Col>
             </Row>
@@ -97,4 +120,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default SignUpForm;

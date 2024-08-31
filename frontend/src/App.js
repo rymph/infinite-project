@@ -1,24 +1,22 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LoginForm from './screen/LoginForm';
-import React, { useState } from 'react';
-import SignUpForm from './screen/SignUpForm';
-import { Button, Container } from 'react-bootstrap';
+import LoginForm from './components/LoginForm';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+import SignUpForm from './components/SignUpForm';
 
 function App() {
-  const [isSignUp, setIsSignUp] = useState(false);
 
   return (
-    <Container className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
-      {isSignUp ? <SignUpForm /> : <LoginForm />}
-      <Button
-        variant="link"
-        onClick={() => setIsSignUp(!isSignUp)}
-        className="w-100 mt-3"
-      >
-        {isSignUp ? 'Already have an account? Login' : 'Don\'t have an account? Sign Up'}
-      </Button>
-    </Container>
+    <Router>
+      <Routes>
+        {/* 루트 경로로 접속 시 로그인 페이지로 리다이렉트 */}
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignUpForm />} />
+      </Routes>
+    </Router>
   );
 }
 
