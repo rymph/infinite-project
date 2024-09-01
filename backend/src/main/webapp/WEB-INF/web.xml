@@ -58,6 +58,6 @@
 
     <filter-mapping>
         <filter-name>jwtFilter</filter-name>
-        <url-pattern>/api/test/*</url-pattern>
+        <url-pattern>/test/*</url-pattern>
     </filter-mapping>
 </web-app>

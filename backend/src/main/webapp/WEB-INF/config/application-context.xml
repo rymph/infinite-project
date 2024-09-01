@@ -19,8 +19,8 @@
     <!-- mybatis sqlSession 설정 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value=""/>
-        <property name="mapperLocations" value=""/>
+        <property name="configLocation" value="classpath:/config/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:/mapper/empty-mapper.xml"/>
     </bean>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
@@ -37,8 +37,8 @@
     </bean>
 
     <!-- transaction manager 설정 -->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"/>
+<!--    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"/>-->
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+<!--    <tx:annotation-driven transaction-manager="transactionManager"/>-->
 
 </beans>

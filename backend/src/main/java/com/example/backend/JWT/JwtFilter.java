@@ -21,7 +21,8 @@ public class JwtFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
 
-        String authHeader = httpRequest.getHeader("Authoriztion");
+        String authHeader = httpRequest.getHeader("Authorization");
+        System.out.println(authHeader);
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             // Authorization 헤더가 없거나 형식이 잘못된 경우
             httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid Authorization header");
