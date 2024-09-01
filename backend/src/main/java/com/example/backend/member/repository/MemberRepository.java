@@ -20,4 +20,16 @@ public class MemberRepository implements MemberMapper {
     public int save(MemberDTO memberDTO) {
         return sm.insert("save", memberDTO);
     }
+
+    @Override
+    public boolean existUser(MemberDTO memberDTO) {
+        return sm.selectOne("existUser", memberDTO);
+    }
+
+    @Override
+    public String getPasswordByUserId(MemberDTO memberDTO) {
+        return sm.selectOne("getPasswordByUserId", memberDTO);
+    }
+
+
 }

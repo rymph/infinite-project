@@ -17,4 +17,9 @@ public class MemberService {
     public int save(MemberDTO memberDTO) {
         return this.memberRepository.save(memberDTO);
     }
+
+    public boolean existUser(MemberDTO memberDTO) {return this.memberRepository.existUser(memberDTO);}
+
+    public String getPasswordByUserId(MemberDTO memberDTO) {return this.memberRepository.getPasswordByUserId(memberDTO);}
+
 }

@@ -5,7 +5,18 @@
 <!-- mapper 설정은 dtd 참고 -->
 <mapper namespace="com.example.backend.member.mapper.MemberMapper">
     <insert id="save" parameterType="member">
-        insert into member(user_id, password)
-        values (#{userId}, #{password})
+        insert into users(user_id, password)
+        values (#{user_id}, #{password})
     </insert>
+    <select id="existUser" parameterType="member" resultType="boolean">
+        select count(*) >= 1
+        from users
+        where user_id = #{user_id}
+    </select>
+
+    <select id="getPasswordByUserId" parameterType="member" resultType="string">
+        select password
+        from users
+        where user_id = #{user_id}
+    </select>
 </mapper>

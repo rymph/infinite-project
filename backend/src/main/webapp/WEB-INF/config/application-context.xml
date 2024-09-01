@@ -6,7 +6,7 @@
 
 
     <!-- db.properties 불러오기, 내용 수정 필요 -->
-    <context:property-placeholder location="/WEB-INF/properties/db.properties"/>
+    <context:property-placeholder location="/WEB-INF/properties/db.properties, /WEB-INF/properties/jwt.properties"/>
 
     <!-- dataSource 설정 -->
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
@@ -25,6 +25,15 @@
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+
+    <bean id="jwtProvider" class="com.example.backend.JWT.JwtProvider">
+        <property name="key" value="${jwt.key}"/>
+        <property name="expiredIn" value="${jwt.expired_in}"/>
+    </bean>
+
+    <bean id="jwtFilter" class="com.example.backend.JWT.JwtFilter">
+        <constructor-arg ref="jwtProvider" />
     </bean>
 
     <!-- transaction manager 설정 -->
