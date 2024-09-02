@@ -6,8 +6,7 @@ import { useNavigate,Link } from 'react-router-dom';
 
 function SignUpForm() {
     const [formData, setFormData] = useState({
-        username: '',
-        email: '',
+        userId: '',
         password: '',
     });
 
@@ -23,7 +22,7 @@ function SignUpForm() {
             setErrors(validationErrors);
         } else {
             try {
-                const response = await axios.post('https://your-api.com/sign-up', formData); // dummy api
+                const response = await axios.post('api', formData); //dummy api
 
                 console.log('Sign up response:', response.data);
 
@@ -52,8 +51,7 @@ function SignUpForm() {
 
     const validate = (values) => {
         const errors = {};
-        if (!values.username) errors.username = 'Username is required';
-        if (!values.email) errors.email = 'Email is required';
+        if (!values.userId) errors.userId = 'userId is required';
         if (!values.password) errors.password = 'Password is required';
         return errors;
     };
@@ -65,31 +63,17 @@ function SignUpForm() {
                     <Form onSubmit={handleSubmit} className="p-4 border rounded">
                         <h2 className="text-center mb-4">Sign Up</h2>
 
-                        <Form.Group controlId="username">
-                            <Form.Label>Username</Form.Label>
+                        <Form.Group controlId="userId" className="mt-3">
+                            <Form.Label>User Id</Form.Label>
                             <Form.Control
-                                type="text"
-                                name="username"
-                                value={formData.username}
+                                type="euserId"
+                                name="userId"
+                                value={formData.userId}
                                 onChange={handleChange}
-                                isInvalid={!!errors.username}
+                                isInvalid={!!errors.userId}
                             />
                             <Form.Control.Feedback type="invalid">
-                                {errors.username}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group controlId="email" className="mt-3">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                isInvalid={!!errors.email}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.email}
+                                {errors.userId}
                             </Form.Control.Feedback>
                         </Form.Group>
 
