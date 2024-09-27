@@ -94,6 +94,26 @@ function SignUpForm() {
                         <Button type="submit" variant="primary" className="mt-4 w-100">
                             Sign Up
                         </Button>
+                        <div className="d-flex align-items-center my-4">
+                            <div className="flex-grow-1 border-top"></div> {/* 구분선 */}
+                            <span className="mx-3 text-muted">간편로그인</span>
+                            <div className="flex-grow-1 border-top"></div> {/* 구분선 */}
+                        </div>
+
+                        {/* OAuth 버튼들 */}
+                        <div className="d-flex justify-content-center">
+                            <Button className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: 'white' }}>
+                                <img src="/google-logo.svg" alt="Google" style={{ width: '24px', height: '24px' }} />
+                            </Button>
+
+                            <Button className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: '#FEE500' }}>
+                                <img src="/KakaoTalk_logo.svg" alt="Kakao" style={{ width: '24px', height: '24px' }} />
+                            </Button>
+
+                            <Button className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: '#03C75A' }}>
+                                <img src="/btnG_icon_square.png" alt="Naver" style={{ width: '35px', height: '35px' }} />
+                            </Button>
+                        </div>
                         <div className="text-center mt-3">
                             <Link to="/login">Already have an account? Login</Link>
                         </div>
