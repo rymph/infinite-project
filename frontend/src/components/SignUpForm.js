@@ -56,6 +56,36 @@ function SignUpForm() {
         return errors;
     };
 
+    const SocialKakao = async() => {
+        // const Rest_api_key = 'api key' //REST API KEY
+        // const redirect_uri = 'uri' //Redirect URI
+        // // oauth 요청 URL
+        // const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`
+        // const handleLogin = () => {
+        //     window.location.href = kakaoURL
+        // }
+
+        // return handleLogin;
+
+        try {
+            const response = await axios.get('api'); // KaKao API 요청
+            console.log('KaKao login response:', response.data);
+            // KaKao 로그인 후 동작 수행
+        } catch (error) {
+            console.error('KaKao login error:', error);
+        }
+    }
+
+    const SocialNaver = async() => {
+        try {
+            const response = await axios.get('api'); // Naver API 요청
+            console.log('Naver login response:', response.data);
+            // Naver 로그인 후 동작 수행
+        } catch (error) {
+            console.error('Naver login error:', error);
+        }
+    }
+
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
             <Row>
@@ -106,11 +136,11 @@ function SignUpForm() {
                                 <img src="/google-logo.svg" alt="Google" style={{ width: '24px', height: '24px' }} />
                             </Button>
 
-                            <Button className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: '#FEE500' }}>
+                            <Button onClick={SocialKakao} className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: '#FEE500' }}>
                                 <img src="/KakaoTalk_logo.svg" alt="Kakao" style={{ width: '24px', height: '24px' }} />
                             </Button>
 
-                            <Button className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: '#03C75A' }}>
+                            <Button onClick={SocialNaver}  className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: '#03C75A' }}>
                                 <img src="/btnG_icon_square.png" alt="Naver" style={{ width: '35px', height: '35px' }} />
                             </Button>
                         </div>
