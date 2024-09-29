@@ -77,13 +77,7 @@ function SignUpForm() {
     }
 
     const SocialNaver = async() => {
-        try {
-            const response = await axios.get('api'); // Naver API 요청
-            console.log('Naver login response:', response.data);
-            // Naver 로그인 후 동작 수행
-        } catch (error) {
-            console.error('Naver login error:', error);
-        }
+        window.location.href = "/oauth2/authorization/naver"; // Naver OAuth URL로 리디렉션
     }
 
     return (
@@ -140,7 +134,7 @@ function SignUpForm() {
                                 <img src="/KakaoTalk_logo.svg" alt="Kakao" style={{ width: '24px', height: '24px' }} />
                             </Button>
 
-                            <Button onClick={SocialNaver}  className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: '#03C75A' }}>
+                            <Button onClick={SocialNaver} className="p-3 mx-2 d-flex align-items-center justify-content-center shadow" style={{ width: '60px', height: '60px', border: 0, backgroundColor: '#03C75A' }}>
                                 <img src="/btnG_icon_square.png" alt="Naver" style={{ width: '35px', height: '35px' }} />
                             </Button>
                         </div>
