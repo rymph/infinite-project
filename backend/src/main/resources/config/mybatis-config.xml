@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!-- DB & Java Object의 Naming Convention 해결하기 위함 -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- type에 DTO Package, alias에 mapper에서 사용할 별칭 -->
+    <typeAliases>
+        <typeAlias type="com.example.common.dto.UserDTO" alias="user"/>
+        <typeAlias type="com.example.common.dto.AuthDTO" alias="auth"/>
+    </typeAliases>
+</configuration>

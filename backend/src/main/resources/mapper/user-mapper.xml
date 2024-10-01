@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper 설정은 dtd 참고 -->
+<mapper namespace="com.example.common.mapper.UserMapper">
+    <insert id="register" parameterType="auth">
+        insert into users(email, password, roles, provider)
+        values (#{email}, #{password}, #{roles}, #{provider1})
+    </insert>
+    <select id="findByEmailAndProvider" parameterType="auth" resultType="user">
+        select * from users
+        where email=#{email} and provider=#{provider}
+    </select>
+</mapper>
